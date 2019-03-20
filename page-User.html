@@ -1,0 +1,118 @@
+﻿<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CnxCenterpoint</title>
+    <script src="js/angular.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="config.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+
+    <style>
+        
+        h4 {
+            
+            text-align: center;
+            color: green;
+        }
+    </style>
+    
+</head>
+<body>
+    <div data-role="page" ng-app="myApp" ng-controller="myCtrl">
+        <div data-role="header">
+            <p style="text-align:center;">ผู้ใช้: {{userName}}</p>
+            <a href="#" ng-click="Logout()" style="margin-top: 5px" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-power">ออกจากระบบ</a>
+        </div>
+        <div data-role="content">
+            <div class="ui-grid-a">
+                <div class="ui-block-a-30%" style="text-align:center;">
+                    <img src="img/IMG_0661.JPG" width="130px" height="130px" border="0" id=" " border-color="#000000">
+                    <h4>CnxCenterpoint Application on Mobile</h4>
+                    
+                </div>
+            
+            
+                <!-- <div style="text-align:center;">
+                
+                    <img src="img/edituser1.png" ng-click="editUser()"
+                    width="100px" height="100px" 
+                    border="" id=" " border-color="#000000">
+                    <p>แก้ไขบัญชีผู้ใช้งาน</p>
+                    
+                </div> -->
+            
+            <div class="ui-grid-a" style="text-align:center;">
+            
+                <div class="ui-block-a"><div  style="height:100%"><img src="img/edituser1.png"  ng-click="editUser()"
+                    width="100px" height="100px" border="" id=" " border-color="#000000">
+                    <p>แก้ไขบัญชีผู้ใช้งาน</p>
+                </div></div>
+                
+                <div class="ui-block-b"><div  style="height:100%"><img src="img/addpro1.png" ng-click="addProduct()" 
+                    width="100px" height="100px" border="" id=" " border-color="#000000">
+                <p>เพิ่มสินค้า</p>
+            </div></div>
+
+               
+            </div>
+
+            <div class="ui-grid-a" style="text-align:center;">
+            
+                    <div class="ui-block-a"><div  style="height:100%"><img src="img/editpro1.png"  ng-click="editProduct()"
+                        width="100px" height="100px" border="" id=" " border-color="#000000">
+                        <p>แก้ไขข้อมูลสินค้า</p>
+                    </div></div>
+                    
+                    <div class="ui-block-b"><div  style="height:100%"><img src="img/Mueller.png" ng-click="Mueller()"
+                        width="100px" height="100px" border="" id=" " border-color="#000000">
+                    <p>คู่มือการใช้งาน</p>
+                    </div></div>
+               
+            
+            </div>
+            
+            
+        </div>
+        </div><!-- /navbar -->
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="index.html" data-icon="home" data-ajax="false">หน้าแรก</a></li>
+                    <li><a href="https://thai.cnxcenterpoint.com/" data-icon="eye" data-ajax="false">ชมเว็บไชต์</a></li>
+                    <li><a href="page-help.html" data-icon="info" data-ajax="false">ช่วยเหลือ</a></li>
+                    <li><a href="#" data-icon="user" data-ajax="false" class="ui-btn-active">บัญชีของฉัน</a></li>
+                </ul>
+            </div>
+        </div><!-- /footer -->
+    </div><!-- /page popup -->
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope, $http, $window) {
+            $scope.userName=$window.sessionStorage.getItem("userName");
+            $scope.addProduct = function () {
+                window.location.href = "page-addProduct.html";
+            }
+            $scope.editProduct = function () {
+                window.location.href = "page-editProduct.html";
+            }
+            $scope.editUser = function () {
+                window.location.href = "page-editUser.html";
+            }
+            $scope.Mueller = function () {
+                window.location.href = "https://drive.google.com/file/d/1JFBA-M9E-mkv6dDeOuM2bLXNzB5Jl70G/view?usp=sharing";
+            }
+            $scope.Logout = function () {
+
+                $window.sessionStorage.removeItem("userId");
+                $window.sessionStorage.removeItem("isAdmin");
+
+                window.location.href = "index.html";
+            }
+        });
+    </script>
+</body>
+</html>
